@@ -7,6 +7,10 @@ Simple page application made with React, that allows you to view a collection of
 ```
 src
 
+├── domain/services
+├── infrastructure
+└── test
+
 ```
 
 ### Used libraries
