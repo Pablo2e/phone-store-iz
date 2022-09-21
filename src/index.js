@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import { ProductListPage } from './infrastructure/pages/ProductListPage';
 import { ProductDetailPage } from './infrastructure/pages/ProductDetailPage';
+import { ProductService } from './domain/services/productService/productService';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<ProductListPage />} />
-          <Route path="/product/:id" element={<ProductDetailPage />} />
+          <Route path="/product/:id" element={<ProductDetailPage addProductToCart={ProductService.addProductToCart}/>} />
         </Route>
       </Routes>
     </BrowserRouter >

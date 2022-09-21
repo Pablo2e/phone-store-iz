@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Button = () => {
+export const Button = ({ text, children, disabled }) => {
   return (
-    <div>Button</div>
-  )
-}
+    <button disabled={disabled}>
+      {text ? text : children ? children : 'Click me!'}
+    </button>
+  );
+};
