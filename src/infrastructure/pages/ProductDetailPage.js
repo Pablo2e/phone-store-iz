@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 import { Button } from '../components/Button'
 import { Image } from '../components/Image'
