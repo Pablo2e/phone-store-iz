@@ -12,6 +12,7 @@ src
 │   ├── components
 │   ├── layout
 │   ├── pages
+│   └── storage
 └── test
 
 ```
