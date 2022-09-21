@@ -10,6 +10,7 @@ src
 ├── domain/services
 ├── infrastructure
 │   ├── components
+│   ├── layout
 └── test
 
 ```
