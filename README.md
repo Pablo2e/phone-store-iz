@@ -6,7 +6,6 @@ Simple page application made with React, that allows you to view a collection of
 
 ```
 src
-├── config
 ├── domain/services
 │   ├── persistenceService
 │   ├── productService

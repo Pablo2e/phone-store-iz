@@ -1,10 +1,10 @@
-import axios from '../../../config/axios.config';
+import axios from 'axios'
 
 export const getDataFromApi = async () => {
 
     try {
 
-        const response = await axios.get('/product')
+        const response = await axios.get('https://front-test-api.herokuapp.com/api/product')
         const isResponseOk = response.data.length !== 0
     
         if (isResponseOk) {
@@ -29,7 +29,7 @@ export const getItemFromApi = async (id) => {
 
   try {
 
-    const response = await axios.get(`/product/${id}`)
+    const response = await axios.get(`https://front-test-api.herokuapp.com/api/product/${id}`)
     const isResponseOk = response.data.length !== 0
 
     if (isResponseOk) {
@@ -53,7 +53,7 @@ export const addProductToCart = async (product) => {
 
   try {
 
-    const response = await axios.post('/cart', {
+    const response = await axios.post('https://front-test-api.herokuapp.com/api/cart', {
       id: product.id,
       colorCode: product.colorCode,
       storageCode: product.storageCode

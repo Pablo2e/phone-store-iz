@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-export const Image = () => {
-  return (
-    <div>Image</div>
-  )
-}
+export const Image = ({ imgUrl, altText, lazyLoading }) => {
+  return <img src={imgUrl} alt={altText} loading={lazyLoading ? 'lazy' : ''} />;
+};

@@ -1,7 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Image } from '../../infrastructure/components/Image';
 
-test('Should render Image component', () => {
-    render(<Image />);
-    expect(screen.getByText('Image')).toBeInTheDocument();
+describe('Image', () => {
+    test('should render Image component', () => {
+      render(
+        <Image imgUrl="https://via.placeholder.com/10" altText="placeholder" />
+      );
+    });
 });
