@@ -9,6 +9,7 @@ src
 
 ├── domain/services
 ├── infrastructure
+│   ├── components
 └── test
 
 ```
