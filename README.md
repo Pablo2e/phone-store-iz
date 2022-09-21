@@ -15,6 +15,9 @@ src
 
 ### Used libraries
 
+- `@testing-library/react` to assist with testing
+- `@testing-library/jest-dom` to assist with testing
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
