@@ -11,6 +11,7 @@ src
 ├── infrastructure
 │   ├── components
 │   ├── layout
+│   ├── pages
 └── test
 
 ```
