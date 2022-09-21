@@ -6,9 +6,10 @@ Simple page application made with React, that allows you to view a collection of
 
 ```
 src
-
+├── config
 ├── domain/services
 │   ├── persistenceService
+│   ├── productService
 ├── infrastructure
 │   ├── components
 │   ├── layout
@@ -20,6 +21,7 @@ src
 
 ### Used libraries
 
+- `axios` to made API Rest request
 - `react-autocomplete-hint` to search autocompletion
 - `react-router-dom` to create app routing
 - `@testing-library/react` to assist with testing
