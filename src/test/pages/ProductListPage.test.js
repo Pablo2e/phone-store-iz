@@ -1,4 +1,3 @@
-
 import { render, screen } from '@testing-library/react';
 import { ProductListPage } from '../../infrastructure/pages/ProductListPage';
 
