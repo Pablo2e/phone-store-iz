@@ -18,6 +18,7 @@ src
 
 ### Used libraries
 
+- `react-autocomplete-hint` to search autocompletion
 - `@testing-library/react` to assist with testing
 - `@testing-library/jest-dom` to assist with testing
 

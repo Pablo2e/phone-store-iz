@@ -1,7 +1,11 @@
 import React from 'react'
+import { Item } from '../components/Item'
 
 export const ProductListPage = () => {
   return (
-    <div>ProductListPage</div>
+    <div>
+      <h1>ProductListPage</h1>
+      <Item />
+    </div>
   )
 }
