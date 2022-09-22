@@ -7,7 +7,7 @@ import { AddToCartButton } from './AddToCartButton'
 
 
 
-export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, options, setUserOptions}) => {
+export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, userOptions, setUserOptions}) => {
   
   useEffect(()=>{
     setUserOptions({
@@ -22,6 +22,7 @@ export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, options
   const storages = item?.options.storages 
   const singleColor = colors.length <=1
   const singleStorage = storages.length <=1
+  console.log(colors, storages, ' actions')
   
   return (
 
@@ -93,7 +94,7 @@ export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, options
           </select>
       }
 
-        <AddToCartButton userOptions={options} text="Add to cart" />
+        <AddToCartButton userOptions={userOptions} text="Add to cart" />
 
       </form>
 
