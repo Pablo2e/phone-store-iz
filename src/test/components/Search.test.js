@@ -1,7 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Search } from '../../infrastructure/components/Search';
 
-test('Should render Search component', () => {
-    render(<Search />);
-    expect(screen.getByText('Search')).toBeInTheDocument();
-});
+describe('Search Bar', () => {
+
+    const setSearchTermMock = jest.fn();
+
+    test('should render Search component', () => {
+
+      render(<Search searchTerm={'searchTerm'} setSearchTerm={setSearchTermMock} />);
+
+    });
+
+  });

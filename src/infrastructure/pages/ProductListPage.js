@@ -13,6 +13,7 @@ import { device } from '../constants/devices-sizes';
 export const ProductListPage = () => {
 
   const [items, setItems] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   
   useEffect(() => {
 
@@ -26,6 +27,17 @@ export const ProductListPage = () => {
     setItems(store)
     
   }
+  
+  const itemsFiltered = items.filter( item => { 
+        
+    return `${item.brand} ${item.model}`.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || 
+           `${item.model} ${item.brand} `.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+           item.model.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+           item.brand.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+    
+  })
+
+  const itemToShow = searchTerm?.length >= 1 ? itemsFiltered : items;
 
   return (
 
@@ -33,7 +45,7 @@ export const ProductListPage = () => {
 
       <div className='first-row-main-screen'>
 
-        <div><Search /></div>                
+        <div><Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} /></div>                
 
       </div>
 
@@ -42,7 +54,7 @@ export const ProductListPage = () => {
         <div className='item-list'>
           
           { 
-            items.map(({ id, imgUrl, brand, model, price }) => {   
+            itemToShow.map(({ id, imgUrl, brand, model, price }) => {   
 
               return (
 
@@ -67,7 +79,7 @@ export const ProductListPage = () => {
     </StyledProductListPage>
 
   )
-  
+
 }
 
 const StyledProductListPage = styled.div`
