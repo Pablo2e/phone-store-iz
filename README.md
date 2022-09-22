@@ -26,6 +26,7 @@ src
 - `react-router-dom` to create app routing
 - `@testing-library/react` to assist with testing
 - `@testing-library/jest-dom` to assist with testing
+- `styled-components` to apply styles to components
 
 # Getting Started with Create React App
 

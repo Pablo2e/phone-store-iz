@@ -1,4 +1,3 @@
-import './App.css';
 import { MainLayout } from './infrastructure/layout/MainLayout';
 
 function App() {
