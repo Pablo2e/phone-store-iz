@@ -1,6 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect} from 'react'
+
+import styled from 'styled-components';
+
 import { AddToCartButton } from './AddToCartButton'
+
+
 
 export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, options, setUserOptions}) => {
   
@@ -15,13 +20,12 @@ export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, options
 
   const colors = item?.options.colors
   const storages = item?.options.storages 
-  console.log(colors)
   const singleColor = colors.length <=1
   const singleStorage = storages.length <=1
   
   return (
 
-    <>
+    <StyledActions>
 
       <form onSubmit={onSubmit}>
 
@@ -93,7 +97,33 @@ export const Actions = ({item, onSubmit, onChangeColor, onChangeStorage, options
 
       </form>
 
-    </>
+    </StyledActions>
 
   );
 }
+
+const StyledActions = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > h3 {
+    flex-basis: 100%;
+  }
+  & > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  & > form > select {
+    font-size: 1.2rem;
+    display: block;
+    width: 320px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0 auto 1rem auto;
+    padding: 0.5rem;
+  }
+`;

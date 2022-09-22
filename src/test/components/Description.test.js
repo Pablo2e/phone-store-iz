@@ -14,17 +14,12 @@ describe('Description', () => {
       expect(screen.getByText(/model/i)).toBeInTheDocument();
       expect(screen.getByText(/price/i)).toBeInTheDocument();
       expect(screen.getByText(/cpu/i)).toBeInTheDocument();
-      expect(screen.getByText(/ram/i)).toBeInTheDocument();
-      expect(screen.getByText(/^os$/i)).toBeInTheDocument();
+      expect(screen.getByText(/operative sistem/i)).toBeInTheDocument();
       expect(screen.getByText(/display resolution/i)).toBeInTheDocument();
-      expect(screen.getByText(/battery/i)).toBeInTheDocument();
-      expect(screen.getByText(/cameras/i)).toBeInTheDocument();
-      expect(screen.getByText(/display type/i)).toBeInTheDocument();
-      expect(screen.getByText(/display size/i)).toBeInTheDocument();
-      expect(screen.getByText(/chipset/i)).toBeInTheDocument();
-      expect(screen.getByText(/external memory/i)).toBeInTheDocument();
-      expect(screen.getByText(/internal memory/i)).toBeInTheDocument();
-      expect(screen.getByText(/^usb$/i)).toBeInTheDocument();
+      expect(screen.getByText(/primary camera/i)).toBeInTheDocument();
+      expect(screen.getByText(/secondary camera/i)).toBeInTheDocument();
+      expect(screen.getByText(/dimentions/i)).toBeInTheDocument();
+      expect(screen.getByText(/weight/i)).toBeInTheDocument();
     });
     
 });

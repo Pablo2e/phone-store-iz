@@ -1,15 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState} from 'react'
 import { useParams, Link } from "react-router-dom";
-import { Button } from '../components/Button'
-import { Image } from '../components/Image'
-import { Description } from '../components/Description'
-import { Actions } from '../components/Actions'
+
+import styled from 'styled-components';
+
 import { ProductService } from '../../domain/services/productService/productService';
+
+import { Actions } from '../components/Actions'
+import { Button } from '../components/Button'
+import { Description } from '../components/Description'
+import { Image } from '../components/Image'
+
+
 
 export const ProductDetailPage = ({addProductToCart}) => {
 
   const { id } = useParams()  
+
   const [item, setItem] = useState();  
   const [userOptions, setUserOptions] = useState({ 
     id, 
@@ -34,22 +41,30 @@ export const ProductDetailPage = ({addProductToCart}) => {
   },[]) 
 
   const onSubmit = async (e) => {
+
     e.preventDefault();
     await addProductToCart({ ...userOptions, id });
+
   };
 
   const onChangeColor = (e) => {
+
     const colorCode = parseInt(e.target.value);
     setUserOptions({ ...userOptions, colorCode });
+
   };
 
   const onChangeStorage = (e) => {
+
     const storageCode = parseInt(e.target.value);
     setUserOptions({ ...userOptions, storageCode });
+
   };
 
   return (
-    <div>
+
+    <StyledProductDetailPage>
+
       {
         item && (
           
@@ -67,7 +82,7 @@ export const ProductDetailPage = ({addProductToCart}) => {
             
             <div className='second-row-product-detail'>
 
-              <Image imgUrl={item.imgUrl} altText={`${item.brand}-${item.model}`}  />
+              <Image className="img" imgUrl={item.imgUrl} altText={`${item.brand}-${item.model}`}  />
 
               <div className='third-row-product-detail'>
 
@@ -92,6 +107,40 @@ export const ProductDetailPage = ({addProductToCart}) => {
 
       }
 
-    </div>
+    </StyledProductDetailPage>
   )
+
 }
+
+const StyledProductDetailPage = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > .first-row-product-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 3rem 3rem;
+  }
+
+  & > .second-row-product-detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 3rem 3rem;
+
+    .img {
+      margin: 1rem;
+    }
+    
+    & > .third-row-product-detail {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin-top: 2rem ;
+      margin-left: 10px ;
+    }
+  }
+`;
