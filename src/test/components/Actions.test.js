@@ -1,6 +1,7 @@
+/* eslint-disable jest/expect-expect */
 import { render } from '@testing-library/react';
+import { singleProduct } from '../../../fixtures/singleProduct.fixture';
 import { Actions } from '../../infrastructure/components/Actions';
-import { singleProduct } from '../../../fixtures/singleProduct.fixture'
 
 const onSubmitMock = jest.fn();
 const onChangeColorMock = jest.fn();
@@ -15,18 +16,18 @@ describe('Actions', () => {
     const userOptionsMock = {
       id,
       colorCode: colors[0].code,
-      storageCode: storages[0].code,
+      storageCode: storages[0].code
     };
     render(
       <Actions
-        item={singleProduct}
-        id={id}
-        onSubmit={onSubmitMock}
-        onChangeColor={onChangeColorMock}
-        onChangeStorage={onChangeStorageMock}
-        options={optionsMock}
-        userOptions={userOptionsMock}
-        setUserOptions={setUserOptionsMock}
+        item={ singleProduct }
+        id={ id }
+        onSubmit={ onSubmitMock }
+        onChangeColor={ onChangeColorMock }
+        onChangeStorage={ onChangeStorageMock }
+        options={ optionsMock }
+        userOptions={ userOptionsMock }
+        setUserOptions={ setUserOptionsMock }
       />
     );
   });

@@ -1,4 +1,4 @@
-import storage from "../../../infrastructure/storage/storage";
+import storage from '../../../infrastructure/storage/storage';
 
 const persist = (key, value) => {
   storage.set(key, value);
@@ -20,5 +20,5 @@ export const PersistenceService = {
   persist,
   get,
   remove,
-  clear,
+  clear
 };

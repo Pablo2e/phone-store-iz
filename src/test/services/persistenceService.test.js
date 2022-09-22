@@ -1,5 +1,5 @@
 import { PersistenceService } from '../../domain/services/PersistenceService/PersistenceService';
-import storage from '../../infrastructure/storage/storage'
+import storage from '../../infrastructure/storage/storage';
 
 jest.mock('../../infrastructure/storage/storage');
 describe('persistenceService', () => {

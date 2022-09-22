@@ -5,14 +5,14 @@ import { Header } from '../../infrastructure/components/Header';
 
 describe('Header', () => {
 
-    test('Should render Header component', () => {
-        render(
-          <BrowserRouter>
-            <Header cartValue={ '1' } />
-          </BrowserRouter>);
-        expect(screen.getByText('Phone Store')).toBeInTheDocument();
-        expect(screen.getByText('1')).toBeInTheDocument();
-      });
+  test('Should render Header component', () => {
+    render(
+      <BrowserRouter>
+        <Header cartValue={ '1' } />
+      </BrowserRouter>);
+    expect(screen.getByText('Phone Store')).toBeInTheDocument();
+    expect(screen.getByText('1')).toBeInTheDocument();
+  });
       
     
 });

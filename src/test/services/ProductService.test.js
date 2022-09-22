@@ -34,7 +34,7 @@ describe('ProductService', () => {
     const productToAdd = {
       id: 'ZmGrkLRPXOTpxsU4jjAcv',
       colorCode: 1000,
-      storageCode: 2000,
+      storageCode: 2000
     };
 
     const { data: count } = await ProductService.addProductToCart(productToAdd);

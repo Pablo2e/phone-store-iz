@@ -1,11 +1,11 @@
-import React,{useState, useEffect} from 'react'
+import { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
 
 import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 
-import { Item } from '../components/Item'
-import { Search } from '../components/Search'
+import { Item } from '../components/Item';
+import { Search } from '../components/Search';
 import { device } from '../constants/devices-sizes';
 
 
@@ -19,23 +19,23 @@ export const ProductListPage = () => {
 
     getItemsFromStore();
     
-  },[])
+  },[]);
   
   const getItemsFromStore = async() => {
 
-    const store = await PersistenceService.get('items') 
-    setItems(store)
+    const store = await PersistenceService.get('items'); 
+    setItems(store);
     
-  }
+  };
   
   const itemsFiltered = items.filter( item => { 
         
     return `${item.brand} ${item.model}`.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || 
            `${item.model} ${item.brand} `.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
            item.model.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-           item.brand.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+           item.brand.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
     
-  })
+  });
 
   const itemToShow = searchTerm?.length >= 1 ? itemsFiltered : items;
 
@@ -45,7 +45,7 @@ export const ProductListPage = () => {
 
       <div className='first-row-main-screen'>
 
-        <div><Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} /></div>                
+        <div><Search searchTerm={ searchTerm } setSearchTerm={ setSearchTerm } /></div>                
 
       </div>
 
@@ -59,15 +59,15 @@ export const ProductListPage = () => {
               return (
 
                 <Item 
-                  key={id}
-                  id={id}
-                  imgUrl={imgUrl}
-                  brand={brand}
-                  model={model}
-                  price={price}
+                  key={ id }
+                  id={ id }
+                  imgUrl={ imgUrl }
+                  brand={ brand }
+                  model={ model }
+                  price={ price }
                 />     
 
-              )
+              );
 
             })            
           }
@@ -78,9 +78,9 @@ export const ProductListPage = () => {
                 
     </StyledProductListPage>
 
-  )
+  );
 
-}
+};
 
 const StyledProductListPage = styled.div`
   display: flex;

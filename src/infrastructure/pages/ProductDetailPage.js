@@ -1,22 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 import { ProductService } from '../../domain/services/productService/productService';
 
-import { Actions } from '../components/Actions'
-import { Button } from '../components/Button'
-import { Description } from '../components/Description'
-import { Image } from '../components/Image'
+import { Actions } from '../components/Actions';
+import { Button } from '../components/Button';
+import { Description } from '../components/Description';
+import { Image } from '../components/Image';
 
 
 
-export const ProductDetailPage = ({addProductToCart}) => {
+export const ProductDetailPage = ({ addProductToCart }) => {
 
-  const { id } = useParams()  
+  const { id } = useParams();  
 
   const [item, setItem] = useState();  
   const [userOptions, setUserOptions] = useState({ 
@@ -29,18 +29,18 @@ export const ProductDetailPage = ({addProductToCart}) => {
 
     ProductService.getItemFromApi(id).then((response) =>{
 
-      setItem(response.data)       
-      PersistenceService.persist('item', response.data) 
+      setItem(response.data);       
+      PersistenceService.persist('item', response.data); 
      
-    }) 
+    }); 
 
-  }
+  };
 
   useEffect(()=>{
 
     getItem(); 
 
-  },[]) 
+  },[]); 
 
   const onSubmit = async (e) => {
 
@@ -74,9 +74,9 @@ export const ProductDetailPage = ({addProductToCart}) => {
 
             <div className='first-row-product-detail'>
 
-              <h3>{item.brand} {item.model}</h3>
+              <h3>{ item.brand } { item.model }</h3>
 
-              <Link to={'/'}>
+              <Link to={ '/' }>
                 <Button text='Back to list'></Button>
               </Link>
 
@@ -84,19 +84,19 @@ export const ProductDetailPage = ({addProductToCart}) => {
             
             <div className='second-row-product-detail'>
 
-              <Image className="img" imgUrl={item.imgUrl} altText={`${item.brand}-${item.model}`}  />
+              <Image className='img' imgUrl={ item.imgUrl } altText={ `${item.brand}-${item.model}` }  />
 
               <div className='third-row-product-detail'>
 
-                <Description product={item} />
+                <Description product={ item } />
 
                 <Actions
-                  item={item}
-                  onSubmit={onSubmit}
-                  onChangeColor={onChangeColor}
-                  onChangeStorage={onChangeStorage}
-                  userOptions={userOptions} 
-                  setUserOptions={setUserOptions}
+                  item={ item }
+                  onSubmit={ onSubmit }
+                  onChangeColor={ onChangeColor }
+                  onChangeStorage={ onChangeStorage }
+                  userOptions={ userOptions } 
+                  setUserOptions={ setUserOptions }
                 />
 
               </div>
@@ -110,9 +110,9 @@ export const ProductDetailPage = ({addProductToCart}) => {
       }
 
     </StyledProductDetailPage>
-  )
+  );
 
-}
+};
 
 const StyledProductDetailPage = styled.div`
   display: flex;

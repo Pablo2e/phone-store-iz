@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styled from 'styled-components';
 
 import { device } from '../constants/devices-sizes';
@@ -19,86 +17,86 @@ export const Description = ({ product }) => {
     secondaryCmera,
     displayResolution,
     dimentions,
-    weight,
+    weight
   } = { ...product };
 
   return (
 
     <StyledDescription>
 
-      <div className="cards-container">
+      <div className='cards-container'>
 
-        <div className="card">
+        <div className='card'>
           <h4>Brand</h4>
-          <p>{brand}</p>
+          <p>{ brand }</p>
         </div>
   
-        <div className="card">
+        <div className='card'>
           <h4>Model</h4>
-          <p>{model}</p>
+          <p>{ model }</p>
         </div>
   
-        <div className="card">
+        <div className='card'>
           <h4>Price €</h4>
-          <p>{price}</p>
+          <p>{ price }</p>
         </div>
   
-        <div className="card">
+        <div className='card'>
           <h4>CPU</h4>
-          <p>{cpu}</p>
+          <p>{ cpu }</p>
         </div>
   
-        <div className="card">
+        <div className='card'>
           <h4>Ram</h4>
-          <p>{ram}</p>
+          <p>{ ram }</p>
         </div>
   
-        <div className="card">
+        <div className='card'>
           <h4>Operative Sistem</h4>
-          <p>{os}</p>
+          <p>{ os }</p>
         </div>
   
-        <div className="card">
+        <div className='card'>
           <h4>Display Resolution</h4>
-          <p>{displayResolution}</p>
+          <p>{ displayResolution }</p>
         </div>
 
-        <div className="card">
+        <div className='card'>
           <h4>Battery</h4>
-          <p>{battery}</p>
+          <p>{ battery }</p>
         </div>
         
-        <div className="card">
+        <div className='card'>
           <h4>Primary Camera</h4>
-          <p>{primaryCamera}</p>
+          <p>{ primaryCamera }</p>
         </div>    
 
         {
           secondaryCmera && (
-            <div className="card">
+            <div className='card'>
               <h4>Secondary Camera</h4>
-              <p>{secondaryCmera}</p>
+              <p>{ secondaryCmera }</p>
             </div>
           )
         }           
         
-        <div className="card">
+        <div className='card'>
           <h4>Dimentions</h4>
-          <p>{dimentions}</p>
+          <p>{ dimentions }</p>
         </div>
 
-        <div className="card">
+        <div className='card'>
           <h4>Weight</h4>
-          <p>{weight}gr</p>
+          <p>{ weight }gr</p>
         </div>
 
       </div>
 
     </StyledDescription>
 
-  )
+  );
 
-}
+};
 
 const StyledDescription = styled.div`
   

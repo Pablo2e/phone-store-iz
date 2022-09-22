@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 import { ProductService } from '../../domain/services/productService/productService';
 
@@ -9,9 +9,9 @@ const useAddProductToCart = () => {
   const addProductToCart = async ({ id, colorCode, storageCode }) => {
 
     const { data: cart } = await ProductService.addProductToCart({
-      id,
       colorCode,
-      storageCode,
+      id,
+      storageCode
     });
 
     if (cart) {
@@ -32,7 +32,7 @@ const useAddProductToCart = () => {
     
   }, []);
 
-  return { cartValue, addProductToCart };
+  return { addProductToCart, cartValue  };
 
 };
 

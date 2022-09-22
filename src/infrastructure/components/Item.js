@@ -1,9 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { Image } from './Image'
+import { Image } from './Image';
 
 
 
@@ -14,32 +13,32 @@ export const Item = ({ id, imgUrl, brand, model, price }) => {
     <StyledItem>
 
       <Link 
-        to={`/product/${id}`}        
-        style={{ textDecoration: 'none', color: 'black' }}
-        > 
+        to={ `/product/${id}` }        
+        style={ { textDecoration: 'none', color: 'black' } }
+      > 
 
         <Items>     
 
-          <div className="container">
+          <div className='container'>
 
-            <div className="card">
+            <div className='card'>
 
-              <div className="card-img">
+              <div className='card-img'>
 
                 <Image
-                  className="img-item"
-                  imgUrl={imgUrl}
-                  altText={`${brand}-${model}`}
-                  lazyLoading={true}
+                  className='img-item'
+                  imgUrl={ imgUrl }
+                  altText={ `${brand}-${model}` }
+                  lazyLoading={ true }
                 />
 
               </div>
 
-              <div className="card-content">
+              <div className='card-content'>
 
-                <h2 className="big-title">{brand}</h2>
-                <h3 className="medium-title">{model}</h3>
-                <h4>{price ? <b>{price} €</b> : <small>Price not available</small>}</h4>                  
+                <h2 className='big-title'>{ brand }</h2>
+                <h3 className='medium-title'>{ model }</h3>
+                <h4>{ price ? <b>{ price } €</b> : <small>Price not available</small> }</h4>                  
 
               </div>
 
@@ -53,8 +52,8 @@ export const Item = ({ id, imgUrl, brand, model, price }) => {
 
     </StyledItem>
 
-  )
-}
+  );
+};
 
 const StyledItem = styled.div`
     display: flex;

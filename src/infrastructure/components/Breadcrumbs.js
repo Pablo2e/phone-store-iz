@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -9,22 +9,22 @@ import { PersistenceService } from '../../domain/services/persistenceService/per
 
 export const BreadCrumbs = () => {  
 
-  const { id } = useParams() 
+  const { id } = useParams(); 
 
   const [item, setItem] = useState(); 
 
   const getItem = () => {
 
-    const ItemStored = PersistenceService.get('item') 
-    setItem(ItemStored) 
+    const ItemStored = PersistenceService.get('item'); 
+    setItem(ItemStored); 
 
-  }
+  };
 
   useEffect(()=>{
 
     getItem(); 
 
-  },[]) 
+  },[]); 
     
 
   if (!id) {
@@ -49,15 +49,15 @@ export const BreadCrumbs = () => {
 
     <StyledBreadCrumbs>
 
-      <Link to="/">
+      <Link to='/'>
         <span>Home</span>
       </Link>
 
-      <span className="separator">⯈</span>
+      <span className='separator'>⯈</span>
 
       <span>
         <b>
-          {item.brand} {item.model}
+          { item.brand } { item.model }
         </b>
       </span>
     </StyledBreadCrumbs>

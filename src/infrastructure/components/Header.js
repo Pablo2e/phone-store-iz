@@ -1,9 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-export const Header = ({cartValue}) => {
+export const Header = ({ cartValue }) => {
 
   return (
 
@@ -11,26 +10,26 @@ export const Header = ({cartValue}) => {
 
       <div className='logo'>
 
-        <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+        <Link to='/' style={ { color: 'black', textDecoration: 'none' } }>
           <h1>Phone Store</h1>
         </Link>
 
       </div>
 
-      <div className="cart">
+      <div className='cart'>
 
         <p>Cart</p>
 
-        <div className="cart-value">{cartValue || 0}</div>
+        <div className='cart-value'>{ cartValue || 0 }</div>
 
       </div>
       
 
     </StyledHeader>
 
-  )
+  );
 
-}
+};
 
 const StyledHeader = styled.div`
   display: flex;

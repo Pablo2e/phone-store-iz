@@ -41,18 +41,18 @@ export const singleProduct = {
     colors: [
       {
         code: 1000,
-        name: 'Black',
-      },
+        name: 'Black'
+      }
     ],
     storages: [
       {
         code: 2000,
-        name: '16 GB',
+        name: '16 GB'
       },
       {
         code: 2001,
-        name: '32 GB',
-      },
-    ],
-  },
+        name: '32 GB'
+      }
+    ]
+  }
 };

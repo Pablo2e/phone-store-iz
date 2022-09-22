@@ -5,13 +5,13 @@ import { BreadCrumbs } from '../../infrastructure/components/BreadCrumbs';
 
 describe('BreadCrumbs', () => {
 
-    test('should render Breadcrumb component', () => {
-        render(
-          <BrowserRouter>
-            <BreadCrumbs />
-          </BrowserRouter>
-        );
-        expect(screen.getByText("Home")).toBeInTheDocument();
-    });
+  test('should render Breadcrumb component', () => {
+    render(
+      <BrowserRouter>
+        <BreadCrumbs />
+      </BrowserRouter>
+    );
+    expect(screen.getByText('Home')).toBeInTheDocument();
+  });
 
 });

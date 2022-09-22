@@ -1,8 +1,7 @@
-import React from 'react'
 import styled from 'styled-components';
 
 
-export const Search = ({searchTerm, setSearchTerm}) => {  
+export const Search = ({ searchTerm, setSearchTerm }) => {  
   
   const handleChange = e => {
     
@@ -13,15 +12,15 @@ export const Search = ({searchTerm, setSearchTerm}) => {
   return (
     
     <StyledInput
-      type="text"
-      placeholder="Search by brand or model"
-      value={searchTerm}
-      onChange={handleChange}
+      type='text'
+      placeholder='Search by brand or model'
+      value={ searchTerm }
+      onChange={ handleChange }
     />
     
-  )
+  );
 
-}
+};
 
 const StyledInput = styled.input`
   border: none;
