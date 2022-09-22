@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 import { ProductService } from '../../domain/services/productService/productService';
 
+import { BreadCrumbs } from '../components/BreadCrumbs';
 import { Header } from '../components/Header'
 
 
@@ -31,6 +32,7 @@ export const MainLayout = () => {
     <StyledMainLayout>
 
         <Header />
+        <BreadCrumbs />
         <Outlet />
 
     </StyledMainLayout>

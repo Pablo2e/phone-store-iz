@@ -37,7 +37,7 @@ const StyledHeader = styled.div`
   flex-direction: row ;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem ;
+  margin: 2rem 1.5rem 0 1.5rem;
   & > .logo {
     display: flex;
     flex-direction: row ;

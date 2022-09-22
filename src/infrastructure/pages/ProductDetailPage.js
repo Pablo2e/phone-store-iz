@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useParams, Link } from "react-router-dom";
 
 import styled from 'styled-components';
 
+import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 import { ProductService } from '../../domain/services/productService/productService';
 
 import { Actions } from '../components/Actions'
@@ -28,13 +29,14 @@ export const ProductDetailPage = ({addProductToCart}) => {
 
     ProductService.getItemFromApi(id).then((response) =>{
 
-      setItem(response.data)  
+      setItem(response.data)       
+      PersistenceService.persist('item', response.data) 
      
     }) 
 
   }
 
-  React.useEffect(()=>{
+  useEffect(()=>{
 
     getItem(); 
 
