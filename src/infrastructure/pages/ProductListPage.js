@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
 import styled from 'styled-components';
@@ -10,7 +11,7 @@ import { device } from '../constants/devices-sizes';
 
 
 
-export const ProductListPage = () => {
+export const ProductListPage = ({ setItem }) => {
 
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -23,6 +24,7 @@ export const ProductListPage = () => {
   
   const getItemsFromStore = async() => {
 
+    setItem();
     const store = await PersistenceService.get('items'); 
     setItems(store);
     

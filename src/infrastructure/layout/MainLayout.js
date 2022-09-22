@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -15,11 +15,12 @@ import { ProductListPage } from '../pages/ProductListPage';
 
 
 
-export const MainLayout = () => {
+export const MainLayout = () => { 
 
   const { cartValue, addProductToCart } = useAddProductToCart();
 
   const [, setItems] = useState([]);
+  const [item, setItem] = useState();
   
   useEffect(() => {
   
@@ -31,6 +32,7 @@ export const MainLayout = () => {
     });
       
   },[]);
+  
 
   return (
 
@@ -38,10 +40,14 @@ export const MainLayout = () => {
 
       <BrowserRouter >
         <Header cartValue={ cartValue }/>
-        <BreadCrumbs />
+        <BreadCrumbs item={ item }/>
         <Routes>
-          <Route path='/' element={ <ProductListPage /> } />
-          <Route path='/product/:id' element={ <ProductDetailPage cartValue={ cartValue } addProductToCart={ addProductToCart }/> } />
+          <Route path='/' element={ <ProductListPage setItem={ setItem }/> } />
+          <Route 
+            path='/product/:id' 
+            element={ 
+              <ProductDetailPage cartValue={ cartValue } addProductToCart={ addProductToCart } item={ item } setItem={ setItem } /> 
+            } />
         </Routes>
       </BrowserRouter >
 

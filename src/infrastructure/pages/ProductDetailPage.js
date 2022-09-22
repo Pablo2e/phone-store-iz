@@ -14,20 +14,19 @@ import { Image } from '../components/Image';
 
 
 
-export const ProductDetailPage = ({ addProductToCart }) => {
+export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   const { id } = useParams();  
-
-  const [item, setItem] = useState();  
+     
   const [userOptions, setUserOptions] = useState({ 
     id, 
     colorCode: null, 
     storageCode: null 
   });
 
-  const getItem = () => {
+  const getItem = async() => {
 
-    ProductService.getItemFromApi(id).then((response) =>{
+    await ProductService.getItemFromApi(id).then((response) =>{
 
       setItem(response.data);       
       PersistenceService.persist('item', response.data); 

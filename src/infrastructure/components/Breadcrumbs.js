@@ -1,33 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { PersistenceService } from '../../domain/services/persistenceService/persistenceService';
 
 
+export const BreadCrumbs = ({ item }) => {     
 
-export const BreadCrumbs = () => {  
-
-  const { id } = useParams(); 
-
-  const [item, setItem] = useState(); 
-
-  const getItem = () => {
-
-    const ItemStored = PersistenceService.get('item'); 
-    setItem(ItemStored); 
-
-  };
-
-  useEffect(()=>{
-
-    getItem(); 
-
-  },[]); 
-    
-
-  if (!id) {
+  if (!item) {
 
     return (
 
@@ -43,25 +22,39 @@ export const BreadCrumbs = () => {
 
     );
 
+  } else {
+    
+
+    return (
+  
+      <StyledBreadCrumbs>
+  
+        { item && (
+  
+          <>
+  
+            <Link to='/'>
+              <span>Home</span>
+            </Link>
+  
+            <span className='separator'>⯈</span>
+  
+            <span>
+              <b>
+                { item.brand } { item.model }
+              </b>
+            </span>
+  
+          </>
+        )
+        }
+  
+      </StyledBreadCrumbs>
+      
+    );
   }
 
-  return (
 
-    <StyledBreadCrumbs>
-
-      <Link to='/'>
-        <span>Home</span>
-      </Link>
-
-      <span className='separator'>⯈</span>
-
-      <span>
-        <b>
-          { item.brand } { item.model }
-        </b>
-      </span>
-    </StyledBreadCrumbs>
-  );
 };
 
 const StyledBreadCrumbs = styled.div`
