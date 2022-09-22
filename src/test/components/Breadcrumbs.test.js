@@ -1,11 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { BreadCrumbs } from '../../infrastructure/components/BreadCrumbs';
-//import { singleProduct } from '../../../fixtures/singleProduct.fixture'
 
-
-
-const getItem = jest.fn()
 
 describe('BreadCrumbs', () => {
 
@@ -16,6 +12,6 @@ describe('BreadCrumbs', () => {
           </BrowserRouter>
         );
         expect(screen.getByText("Home")).toBeInTheDocument();
-      });
+    });
 
 });

@@ -20,7 +20,7 @@ describe('Item', () => {
         expect(screen.getByRole('img')).toBeInTheDocument();
         expect(screen.getByText(brand)).toBeInTheDocument();
         expect(screen.getByText(model)).toBeInTheDocument();
-        expect(screen.getByText(`${price}€`)).toBeInTheDocument();
+        expect(screen.getByText(`${price} €`)).toBeInTheDocument();
     });
 
     test('should render Item with default text if device has not price', () => {
