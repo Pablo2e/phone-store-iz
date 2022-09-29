@@ -20,7 +20,7 @@ const storage = {
   
     const item = {
       value,
-      expires: now.getTime() + 60 * 60 * 1000
+      expires: now.setHours(now.getHours() + 1)
     };
     localStorage.setItem(key, JSON.stringify(item));
   },
