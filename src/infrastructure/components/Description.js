@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-import { device } from '../constants/devices-sizes';
-
-
 
 export const Description = ({ product }) => {
   const {
@@ -24,72 +21,56 @@ export const Description = ({ product }) => {
 
     <StyledDescription>
 
-      <div className='cards-container'>
+      <div className='item'>
+        <span><b>Brand: </b>{ brand }</span>
+      </div>
 
-        <div className='card'>
-          <h4>Brand</h4>
-          <p>{ brand }</p>
-        </div>
-  
-        <div className='card'>
-          <h4>Model</h4>
-          <p>{ model }</p>
-        </div>
-  
-        <div className='card'>
-          <h4>Price €</h4>
-          <p>{ price }</p>
-        </div>
-  
-        <div className='card'>
-          <h4>CPU</h4>
-          <p>{ cpu }</p>
-        </div>
-  
-        <div className='card'>
-          <h4>Ram</h4>
-          <p>{ ram }</p>
-        </div>
-  
-        <div className='card'>
-          <h4>Operative Sistem</h4>
-          <p>{ os }</p>
-        </div>
-  
-        <div className='card'>
-          <h4>Display Resolution</h4>
-          <p>{ displayResolution }</p>
-        </div>
+      <div className='item'>
+        <span><b>Model: </b>{ model }</span>
+      </div>
 
-        <div className='card'>
-          <h4>Battery</h4>
-          <p>{ battery }</p>
-        </div>
-        
-        <div className='card'>
-          <h4>Primary Camera</h4>
-          <p>{ primaryCamera }</p>
-        </div>    
+      <div className='item'>
+        <span><b>Price €: </b>{ price }</span>
+      </div>
 
-        {
-          secondaryCmera && (
-            <div className='card'>
-              <h4>Secondary Camera</h4>
-              <p>{ secondaryCmera }</p>
-            </div>
-          )
-        }           
-        
-        <div className='card'>
-          <h4>Dimentions</h4>
-          <p>{ dimentions }</p>
-        </div>
+      <div className='item'>
+        <span><b>CPU: </b>{ cpu }</span>
+      </div>
 
-        <div className='card'>
-          <h4>Weight</h4>
-          <p>{ weight }gr</p>
-        </div>
+      <div className='item'>
+        <span><b>Ram: </b>{ ram }</span>
+      </div>
 
+      <div className='item'>
+        <span><b>Operative Sistem: </b>{ os }</span>
+      </div>
+
+      <div className='item'>
+        <span><b>Display Resolution: </b>{ displayResolution }</span>
+      </div>
+
+      <div className='item'>
+        <span><b>Battery: </b>{ battery }</span>
+      </div>
+      
+      <div className='item'>
+        <span><b>Primary Camera: </b>{ primaryCamera }</span>
+      </div>    
+
+      {
+        secondaryCmera && (
+          <div className='item'>
+            <span><b>Secondary Camera: </b>{ secondaryCmera }</span>
+          </div>
+        )
+      }           
+      
+      <div className='item'>
+        <span><b>Dimentions: </b>{ dimentions }</span>
+      </div>
+
+      <div className='item'>
+        <span><b>Weight: </b>{ weight }gr</span>
       </div>
 
     </StyledDescription>
@@ -99,46 +80,14 @@ export const Description = ({ product }) => {
 };
 
 const StyledDescription = styled.div`
-  
-  & > .cards-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  & > .item{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap ;
-    max-width: 1000px;
-    justify-content: center;
-
-    & > .card{
-      width: 100%;
-      align-self: auto;
-      margin: 10px;
-  
-      @media ${device.mobileL} { 
-        width: 46%;
-        align-self: auto;
-      }
-  
-      @media ${device.laptop} {
-        width: 22%;
-      }
-    }
+    justify-content: space-between;
   }
 
-  .card {
-  background-color: white;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  box-shadow: 0 1px 8px rgba(22,22,22, 0.1);
-  width: 100%;
-  max-width: 130px;
-  margin: 0 auto 1rem;
-  text-align: center;
-  padding: 0.1rem 0.2rem 0.2rem;
-  }
-  .card:hover {
-    box-shadow: 0 0 35px rgba(0, 0, 0, .3);
-    }
-  
-  h1 {
-    font-weight: 400;
-  }
 `;

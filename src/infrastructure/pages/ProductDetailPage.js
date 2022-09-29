@@ -12,6 +12,8 @@ import { Button } from '../components/Button';
 import { Description } from '../components/Description';
 import { Image } from '../components/Image';
 
+import { device } from '../constants/devices-sizes';
+
 
 
 export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
@@ -83,9 +85,13 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
             
             <div className='second-row-product-detail'>
 
-              <Image className='img' imgUrl={ item.imgUrl } altText={ `${item.brand}-${item.model}` }  />
+              <div className='column'>
 
-              <div className='third-row-product-detail'>
+                <Image className='img' imgUrl={ item.imgUrl } altText={ `${item.brand}-${item.model}` }  />
+
+              </div>
+
+              <div className='third-row-product-detail column'>
 
                 <Description product={ item } />
 
@@ -127,10 +133,22 @@ const StyledProductDetailPage = styled.div`
 
   & > .second-row-product-detail {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 1rem 3rem 3rem;
+
+    @media ${device.tablet} { 
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .column {
+      flex: 50%;
+      display: grid;
+      place-items: center;
+    }
 
     .img {
       margin: 1rem;
