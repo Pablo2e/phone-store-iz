@@ -11,6 +11,8 @@ src
 │   ├── productService
 ├── infrastructure
 │   ├── components
+│   ├── config
+│   ├── constants
 │   ├── hooks
 │   ├── layout
 │   ├── pages
@@ -38,10 +40,10 @@ v16.14.2
 
 ### How to run the project
 
-Go to https://github.com/Pablo2e/phone-store-iz
+Go to https://github.com/Pablo2e/phone-store-iz.\
 Open a new terminal and clone the project in a folder of your choice
-> git clone https://github.com/Pablo2e/phone-store-iz.git
-then 
+> git clone https://github.com/Pablo2e/phone-store-iz.git.\
+then.\ 
 > cd.. phone-store-iz
 
 ## Available Scripts
