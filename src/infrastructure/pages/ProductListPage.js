@@ -19,7 +19,9 @@ export const ProductListPage = ({ setItem }) => {
   const getItemsFromStore = async() => {
 
     setItem();
+
     const store = await PersistenceService.get('items'); 
+
     setItems(store);
     
   };
@@ -30,7 +32,7 @@ export const ProductListPage = ({ setItem }) => {
     
   },[]);
   
-  const itemsFiltered = items.filter( item => { 
+  const itemsFiltered = items?.filter( item => { 
         
     return `${item.brand} ${item.model}`.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || 
            `${item.model} ${item.brand} `.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||

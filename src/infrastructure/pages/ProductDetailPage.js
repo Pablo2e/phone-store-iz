@@ -19,6 +19,8 @@ import { device } from '../constants/devices-sizes';
 export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   const { id } = useParams();  
+
+  const deviceFromStore = PersistenceService.get('items').filter(phone => phone.id === id);
      
   const [userOptions, setUserOptions] = useState({ 
     id, 
@@ -28,12 +30,20 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   const getItem = async() => {
 
-    await ProductService.getItemFromApi(id).then((response) =>{
+    if(PersistenceService.get(deviceFromStore[0].model) !== null){
 
-      setItem(response.data);       
-      PersistenceService.persist('item', response.data); 
-     
-    }); 
+      setItem(PersistenceService.get(deviceFromStore[0].model));
+
+    } else {
+      
+      await ProductService.getItemFromApi(id).then((response) =>{
+  
+        setItem(response.data);      
+        PersistenceService.persist(response.data.model, response.data); 
+        
+      }); 
+      
+    }    
 
   };
 

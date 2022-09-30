@@ -27,9 +27,13 @@ export const MainLayout = () => {
     ProductService.getDataFromApi().then((response) => {
   
       setItems(response.data);
+      
       PersistenceService.persist('items', response.data);
+
       if(PersistenceService.get('cartCount') === null){
+
         PersistenceService.persist('cartCount', 0);
+
       } 
 
     });
