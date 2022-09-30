@@ -34,11 +34,11 @@ src
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Node Version
+### `Node Version`
 
 v16.14.2
 
-### How to run the project
+### `How to run the project`
 
 Go to https://github.com/Pablo2e/phone-store-iz.\
 Open a new terminal and clone the project in a folder of your choice
