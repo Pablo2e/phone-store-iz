@@ -16,12 +16,6 @@ export const ProductListPage = ({ setItem }) => {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   
-  useEffect(() => {
-
-    getItemsFromStore();
-    
-  },[]);
-  
   const getItemsFromStore = async() => {
 
     setItem();
@@ -29,6 +23,12 @@ export const ProductListPage = ({ setItem }) => {
     setItems(store);
     
   };
+  
+  useEffect(() => {
+
+    getItemsFromStore();
+    
+  },[]);
   
   const itemsFiltered = items.filter( item => { 
         

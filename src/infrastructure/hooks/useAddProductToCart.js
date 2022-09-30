@@ -17,14 +17,14 @@ const useAddProductToCart = () => {
     if (cart) {
 
       setCartValue((count) => count + 1);
-
+      PersistenceService.persist('cartCount', cartValue + 1);
     }
 
   };
 
   useEffect(() => {
 
-    const storedCartCount = PersistenceService.get('cart');
+    const storedCartCount = PersistenceService.get('cartCount');
 
     if (storedCartCount) {
       setCartValue(storedCartCount);
