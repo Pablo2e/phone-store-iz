@@ -16,21 +16,23 @@ export const ProductListPage = ({ setItem }) => {
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   
+  const getItemsFromStore = async() => {
+
+    setItem();
+
+    const store = await PersistenceService.get('items'); 
+
+    setItems(store);
+    
+  };
+  
   useEffect(() => {
 
     getItemsFromStore();
     
   },[]);
   
-  const getItemsFromStore = async() => {
-
-    setItem();
-    const store = await PersistenceService.get('items'); 
-    setItems(store);
-    
-  };
-  
-  const itemsFiltered = items.filter( item => { 
+  const itemsFiltered = items?.filter( item => { 
         
     return `${item.brand} ${item.model}`.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) || 
            `${item.model} ${item.brand} `.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||

@@ -12,11 +12,15 @@ import { Button } from '../components/Button';
 import { Description } from '../components/Description';
 import { Image } from '../components/Image';
 
+import { device } from '../constants/devices-sizes';
+
 
 
 export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   const { id } = useParams();  
+
+  const deviceFromStore = PersistenceService.get('items').filter(phone => phone.id === id);
      
   const [userOptions, setUserOptions] = useState({ 
     id, 
@@ -26,12 +30,20 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   const getItem = async() => {
 
-    await ProductService.getItemFromApi(id).then((response) =>{
+    if(PersistenceService.get(deviceFromStore[0].model) !== null){
 
-      setItem(response.data);       
-      PersistenceService.persist('item', response.data); 
-     
-    }); 
+      setItem(PersistenceService.get(deviceFromStore[0].model));
+
+    } else {
+      
+      await ProductService.getItemFromApi(id).then((response) =>{
+  
+        setItem(response.data);      
+        PersistenceService.persist(response.data.model, response.data); 
+        
+      }); 
+      
+    }    
 
   };
 
@@ -62,6 +74,8 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   };
 
+  const { options } = { ...item };
+
   return (
 
     <StyledProductDetailPage>
@@ -83,9 +97,13 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
             
             <div className='second-row-product-detail'>
 
-              <Image className='img' imgUrl={ item.imgUrl } altText={ `${item.brand}-${item.model}` }  />
+              <div className='column'>
 
-              <div className='third-row-product-detail'>
+                <Image className='img' imgUrl={ item.imgUrl } altText={ `${item.brand}-${item.model}` }  />
+
+              </div>
+
+              <div className='third-row-product-detail column'>
 
                 <Description product={ item } />
 
@@ -94,6 +112,7 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
                   onSubmit={ onSubmit }
                   onChangeColor={ onChangeColor }
                   onChangeStorage={ onChangeStorage }
+                  options={ options }
                   userOptions={ userOptions } 
                   setUserOptions={ setUserOptions }
                 />
@@ -127,10 +146,22 @@ const StyledProductDetailPage = styled.div`
 
   & > .second-row-product-detail {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 1rem 3rem 3rem;
+
+    @media ${device.tablet} { 
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .column {
+      flex: 50%;
+      display: grid;
+      place-items: center;
+    }
 
     .img {
       margin: 1rem;
