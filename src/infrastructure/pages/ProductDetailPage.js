@@ -74,6 +74,8 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
 
   };
 
+  const { options } = { ...item };
+
   return (
 
     <StyledProductDetailPage>
@@ -110,6 +112,7 @@ export const ProductDetailPage = ({ addProductToCart, item, setItem }) => {
                   onSubmit={ onSubmit }
                   onChangeColor={ onChangeColor }
                   onChangeStorage={ onChangeStorage }
+                  options={ options }
                   userOptions={ userOptions } 
                   setUserOptions={ setUserOptions }
                 />

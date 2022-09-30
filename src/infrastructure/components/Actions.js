@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable sort-keys */
-import { useEffect } from 'react';
 
 import styled from 'styled-components';
 
@@ -8,91 +7,48 @@ import { AddToCartButton } from './AddToCartButton';
 
 
 
-export const Actions = ({ item, onSubmit, onChangeColor, onChangeStorage, userOptions, setUserOptions }) => {
-  
-  useEffect(()=>{
-    setUserOptions({
-      id: item.id,
-      colorCode: document.getElementById('color').value,
-      storageCode: document.getElementById('storage').value
-    });
+export const Actions = ({ item, onSubmit, onChangeColor, onChangeStorage, options, userOptions }) => {  
+ 
+  const { colors, storages } = options;
 
-  },[setUserOptions]); 
-
-  const colors = item?.options.colors;
-  const storages = item?.options.storages; 
-  const singleColor = colors.length <=1;
-  const singleStorage = storages.length <=1;
+  const mapOption = (key) => {
+    const optionMapped = key.map(({ name, code }) => (
+      <option key={ `${item.id}-${code}` } value={ code }>
+        { name }
+      </option>
+    ));
+    return optionMapped;
+  };
   
   return (
 
     <StyledActions>
 
       <form onSubmit={ onSubmit }>
+                   
+        <select onChange={ onChangeColor } defaultValue='index'>
 
-        {
-          singleColor 
-            ?         
-            <select onChange={ onChangeColor } defaultValue={ item.options.colors[0].code } id='color'>
-  
-              {            
-                colors && colors.map(({ name, code }) => (
-                  <option key={ `${item.id}-${code}` } value={ code }>
-                    { name }
-                  </option>
-                )) 
-              }
-  
-            </select>
-            :
-            <select onChange={ onChangeColor } defaultValue={ item.options.colors[0].code } id='color'>
-
-              <option key={ `${item.id}-colors` } value={ item.options.colors[0].code } disabled>
+          <option key={ `${item.id}-colors` } value='index' disabled>
             Colors
-              </option>
+          </option>
 
-              {            
-                colors && colors.map(({ name, code }) => (
-                  <option key={ `${item.id}-${code}` } value={ code }>
-                    { name }
-                  </option>
-                )) 
-              }
+          {            
+            mapOption(colors)
+          }
 
-            </select>
-        }
+        </select>
 
-        {
-          singleStorage
-            ?
-            <select onChange={ onChangeStorage } defaultValue={ item.options.storages[0].code } id='storage'>
+        <select onChange={ onChangeStorage } defaultValue='index'>
 
-              {
-                storages && storages.map(({ name, code }) => (
-                  <option key={ `${item.id}-${code}` } value={ code }>
-                    { name }
-                  </option>
-                ))
-              }
-
-            </select>
-            :
-            <select onChange={ onChangeStorage } defaultValue={ item.options.storages[0].code } id='storage'>
-
-              <option key={ `${item.id}-storages` } value={ item.options.storages[0].code } disabled>
+          <option key={ `${item.id}-storages` } value='index' disabled>
             Storages
-              </option>
+          </option>
 
-              {
-                storages && storages.map(({ name, code }) => (
-                  <option key={ `${item.id}-${code}` } value={ code }>
-                    { name }
-                  </option>
-                ))
-              }
+          {
+            mapOption(storages)
+          }
 
-            </select>
-        }
+        </select>
 
         <AddToCartButton userOptions={ userOptions } text='Add to cart' />
 
