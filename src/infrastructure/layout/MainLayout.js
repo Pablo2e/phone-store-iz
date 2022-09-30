@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes  } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -19,24 +19,44 @@ export const MainLayout = () => {
 
   const { cartValue, addProductToCart } = useAddProductToCart();
 
-  const [, setItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [item, setItem] = useState();
+
+  const itemsFromStore = () => {
+
+    if(PersistenceService.get('items') === null){
+
+      return true;
+      
+    }  
+
+  };
   
   useEffect(() => {
+
+    if(itemsFromStore()){
+
+      ProductService.getDataFromApi().then((response) => {
+    
+        setItems(response.data);
+        
+        PersistenceService.persist('items', response.data);
   
-    ProductService.getDataFromApi().then((response) => {
+        if(PersistenceService.get('cartCount') === null){
   
-      setItems(response.data);
-      
-      PersistenceService.persist('items', response.data);
+          PersistenceService.persist('cartCount', 0);
+  
+        } 
+  
+        itemsFromStore();
+  
+      });
 
-      if(PersistenceService.get('cartCount') === null){
+    }
 
-        PersistenceService.persist('cartCount', 0);
+    const store = PersistenceService.get('items'); 
 
-      } 
-
-    });
+    setItems(store);  
       
   },[]);
   
@@ -49,7 +69,7 @@ export const MainLayout = () => {
         <Header cartValue={ cartValue }/>
         <BreadCrumbs item={ item }/>
         <Routes>
-          <Route path='/' element={ <ProductListPage setItem={ setItem }/> } />
+          <Route path='/' element={ <ProductListPage items={ items } setItems={ setItems }/> } />
           <Route 
             path='/product/:id' 
             element={ 

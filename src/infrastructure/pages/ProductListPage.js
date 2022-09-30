@@ -11,18 +11,23 @@ import { device } from '../constants/devices-sizes';
 
 
 
-export const ProductListPage = ({ setItem }) => {
+export const ProductListPage = ( { items, setItems } ) => {
 
-  const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   
   const getItemsFromStore = async() => {
 
-    setItem();
+    if(PersistenceService.get('items') !== null){
 
-    const store = await PersistenceService.get('items'); 
+      const store = await PersistenceService.get('items'); 
 
-    setItems(store);
+      setItems(store);      
+
+    } else {
+
+      setItems(items);      
+      
+    }      
     
   };
   
@@ -58,7 +63,7 @@ export const ProductListPage = ({ setItem }) => {
         <div className='item-list'>
           
           { 
-            itemToShow.map(({ id, imgUrl, brand, model, price }) => {   
+            itemToShow && itemToShow.map(({ id, imgUrl, brand, model, price }) => {   
 
               return (
 
